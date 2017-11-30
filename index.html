@@ -1,1 +1,17 @@
 30 nov 2017 -- getting setup with jenkins on docker on centos7
+$ docker pull jenkins/jenkins
+
+This pulls the image from jenkins on docker hub.
+
+$ sudo mkdir /var/jenkins_home
+$ docker run -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home --name jenkins jenkins/jenkins:ts
+
+Create a jenkins_home folder for plugin management (per the github for jenkins docker page)
+
+docker run (create+start) and --name the image.
+
+$ sudo docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
+
+That will get you the initial root password.
+
+I haven't figured out where users and passwords are stored, so make sure you note down what your initial user and password account you create will be.
