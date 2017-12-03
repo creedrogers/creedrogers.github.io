@@ -1,31 +1,48 @@
-<img src="https://media0.giphy.com/media/JmeBiOJOuzjkk/giphy.gif" width=50 height=50>
+<style>
+code {font-family: "Monaco"; font-size: 9pt; background-color: #dddddd; padding: 8px;}
+</style>
+
+<img src="https://media.giphy.com/media/yoJC2wqc7suVTag7i8/giphy.gif" width=50 height=50>03 dec 2017 -- lessons learned: gitlab and docker
+<hr>
+First things first.<p> <p>
+<code>/var/lib/docker/volumes/</code> is where internal volumes for containers are stored.<p>
+Make sure you always -- ALWAYS -- use external volumes for data storage or at the very least named ones.  You don't want your data being lost when you update docker.
+<p><code>
+sudo docker run -i \
+    --hostname hydrogen \
+    --publish 8443:443 --publish 8088:80 --publish 2222:22 \
+    --name gitlab \
+    --volume /data/gitlab/config:/etc/gitlab \
+    --volume /data/gitlab/logs:/var/log/gitlab \
+    --volume /data/gitlab/data:/var/opt/gitlab \
+    --restart always \
+    gitlab/gitlab-ce:latest</code><p>
+^^ That's what I used to create my gitlab container.
+
+
+<p><img src="https://media0.giphy.com/media/JmeBiOJOuzjkk/giphy.gif" width=50 height=50>
 30 nov 2017 -- getting setup with jenkins on docker on centos7
 <hr>
-<font face='monospace'>
+<code>
 $ docker pull jenkins/jenkins
-</font>
-<p>
-This pulls the image from jenkins on docker hub.
-<p>
-<font face='monospace'>
+</code>
+<p>This pulls the image from jenkins on docker hub.<p>
+<code>
 $ docker run -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home --name jenkins jenkins/jenkins:lts
-</font>
-<p>
-Create a jenkins_home folder for plugin management (per the github for jenkins docker page)
-<br>
-docker run (create+start) and --name the image.
-<p>
-<font face='monospace'>
+</code>
+<p>Create a jenkins_home folder for plugin management (per the github for jenkins docker page)<br>
+docker run (create+start) and --name the image.<p>
+<code>
 $ sudo docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
-</font>
+</code>
 <p>
 That will get you the initial root password.
 <br>
 I haven't figured out where users and passwords are stored, so make sure you note down what your initial user and password account you create will be.
 <p>
-<font face='monospace'>
+<code>
 $ docker update --restart=no my-container
-</font><p>
+</code><p>
 
 Forget to flag the container to have a restart policy?  Do it here.
 <p>
