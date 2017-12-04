@@ -1,14 +1,13 @@
-<style>
-code {font-family: "Monaco"; font-size: 9pt; background-color: #dddddd; padding: 8px;}
-</style>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 
 <img src="https://media.giphy.com/media/yoJC2wqc7suVTag7i8/giphy.gif" width=50 height=50>03 dec 2017 -- lessons learned: gitlab and docker
 <hr>
-First things first.<p> <p>
-<code>/var/lib/docker/volumes/</code> is where internal volumes for containers are stored.<p>
+<pre><code>/var/lib/docker/volumes/</code></pre> is where internal volumes for containers are stored.<p>
 Make sure you always -- ALWAYS -- use external volumes for data storage or at the very least named ones.  You don't want your data being lost when you update docker.
-<p><code>
-  sudo docker run -i \<br>
+<p><pre><code>
+sudo docker run -i \<br>
     --hostname hydrogen \<br>
     --publish 8443:443 --publish 8088:80 --publish 2222:22 \<br>
     --name gitlab \<br>
@@ -16,7 +15,7 @@ Make sure you always -- ALWAYS -- use external volumes for data storage or at th
     --volume /data/gitlab/logs:/var/log/gitlab \<br>
     --volume /data/gitlab/data:/var/opt/gitlab \<br>
     --restart always \<br>
-    gitlab/gitlab-ce:latest</code><p>
+    gitlab/gitlab-ce:latest</code></pre><p>
 ^^ That's what I used to create my gitlab container.
 
 
