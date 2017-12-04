@@ -8,14 +8,14 @@ First things first.<p> <p>
 <code>/var/lib/docker/volumes/</code> is where internal volumes for containers are stored.<p>
 Make sure you always -- ALWAYS -- use external volumes for data storage or at the very least named ones.  You don't want your data being lost when you update docker.
 <p><code>
-sudo docker run -i \
-    --hostname hydrogen \
-    --publish 8443:443 --publish 8088:80 --publish 2222:22 \
-    --name gitlab \
-    --volume /data/gitlab/config:/etc/gitlab \
-    --volume /data/gitlab/logs:/var/log/gitlab \
-    --volume /data/gitlab/data:/var/opt/gitlab \
-    --restart always \
+  sudo docker run -i \<br>
+    --hostname hydrogen \<br>
+    --publish 8443:443 --publish 8088:80 --publish 2222:22 \<br>
+    --name gitlab \<br>
+    --volume /data/gitlab/config:/etc/gitlab \<br>
+    --volume /data/gitlab/logs:/var/log/gitlab \<br>
+    --volume /data/gitlab/data:/var/opt/gitlab \<br>
+    --restart always \<br>
     gitlab/gitlab-ce:latest</code><p>
 ^^ That's what I used to create my gitlab container.
 
