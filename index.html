@@ -7,8 +7,8 @@
 Step 0: Apply for API key <a href="https://api.census.gov/data/key_signup.html">https://api.census.gov/data/key_signup.html</a><br>
 Step 1: Familiarize yourself with <a href="https://api.census.gov/data/2016/pep/population/examples.html">examples for the population dataset</a><br>
 Step 2: Execute the following zsh/bash script to grab all the state codes. You'll have to regex this into a sensible python/Java/whatever object:<br>
-<pre><code>for i in {01..60}; do curl "https://api.census.gov/data/2016/pep/population?get=GEONAME&amp;for=state:$i&amp;DATE=9&amp;key=YOUR_KEY_HERE" &lt; states.out; done</code></pre><br>
-Just as minor note: <b>&lt;</b> means you output to a file that is created when you run the above.  That file doesn't need to be there when you run the snippet.<br>
+<pre><code>for i in {01..60}; do curl "https://api.census.gov/data/2016/pep/population?get=GEONAME&amp;for=state:$i&amp;DATE=9&amp;key=YOUR_KEY_HERE" &gt; states.out; done</code></pre><br>
+Just as minor note: <b>&gt;</b> means you output to a file that is created when you run the above.  That file doesn't need to be there when you run the snippet.<br>
 Step 3: TODO: Put in this spot the exact API HTTPS endpoint that'll give you population for the greater metro area for a given metro location.  e.g. 'Reston, VA' should return, perhaps, the greater metro area's population rather than <b>just</b> Reston's population.<p>&nbsp;<p>
 
 
