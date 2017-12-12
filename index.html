@@ -2,6 +2,13 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
+<img src="https://media.giphy.com/media/RnXU1HAMSuVSo/giphy.gif" width=50 height=50>12 dec 2017 -- git diff got you down?
+<hr>
+<pre><code>$ git --no-pager diff</pre></code>
+Use that if your git diff isn't showing you anything but you've added to the staging area.  You can also unset your pager or set it like so:<br>
+<pre><code>git config --global core.pager 'less'</code></pre>
+And just do an empty string '' if you don't want less.  Also double check your environment variables to see if there's something like LESS set.<p> <p>
+
 <img src="https://giffiles.alphacoders.com/124/12436.gif" width=50 height=50>09 dec 2017
 <hr>
 Step 0: Apply for API key <a href="https://api.census.gov/data/key_signup.html">https://api.census.gov/data/key_signup.html</a><br>
