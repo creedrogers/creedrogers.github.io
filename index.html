@@ -2,6 +2,16 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
+<img src="http://gifimage.net/wp-content/uploads/2017/07/banging-head-against-wall-gif-13.gif" width=50 height=50>12 dec 2017 -- git diff got you down?
+<hr>
+PostgresQL headaches on CentOS 7.<br>
+<ol>
+  <li>The name of the service is "postgresql".  Not "postgres."
+  <li>If you want to move your data folder (typically in /var/lib/pgsql) to a mounted folder so you have more room than what's in /var, and you want to use a symlink, then SELinux will strike you down.  SELinux prevents system level services from following symlinks.  I tried setting PGDATa in ~/.bash_profile for user postgres to /data/postgres/pgsql (which was the new target folder on /data which is 1.3TB drive) but no dice.  Kibosh was put by SELinux.  So, I made SELinux permissive by editing /etc/selinux/config and setting SELINUX=permissive rather than SELINUX=enabled.  You can also temporarily set it permissively for your current session by running 'setenforce 0'.
+</ol>
+
+Yeah.  Pain in the tuckus.<p>&nbsp;<p>
+
 <img src="https://media.giphy.com/media/RnXU1HAMSuVSo/giphy.gif" width=50 height=50>12 dec 2017 -- git diff got you down?
 <hr>
 <pre><code>$ git --no-pager diff</pre></code>
